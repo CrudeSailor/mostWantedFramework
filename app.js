@@ -216,8 +216,8 @@ function findPersonFamily(person, people){
     let result = people.filter(function(element){      
         if (person.currentSpouse === element.id){return true}        
         if (person.parents.includes(element.id)){return true}        
-        if (person.parents === element.parents){return true}             
-        // alert(personFamily.firstName.lastName)
+        if (person.parents === element.parents){return true}
+        if (person.currentSpouse === element.id) alert("current spouse")
     })
     return displayPeople(result)
 }
