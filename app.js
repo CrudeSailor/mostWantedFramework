@@ -205,7 +205,7 @@ function findPersonFamily(person){
     personFamily += `Last Name: ${person.lastName}\n`
     personFamily += `Parents: ${person.parents}\n`
     personFamily += `Current Spouse: ${person.currentSpouse}\n`
+    if    
     alert(personFamily)
-}
     
-            
+}
