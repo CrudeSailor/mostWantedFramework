@@ -147,7 +147,7 @@ function displayPerson(person) {
     personInfo += `Eye Color: ${person.eyeColor}\n`;
     personInfo += `Occupation: ${person.occupation}\n`;
     personInfo += `Parents: ${person.Parents}\n`;
-    personInfo += `Current Spouse: ${person.currentSpouse}\n`;
+    personInfo += `Current Spuse: ${person.currentSpouse}\n`;
 
 
 
@@ -198,3 +198,14 @@ function chars(input) {
 
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
+
+
+function findPersonFamily(person){
+    let personFamily = `First Name: ${person.firstName}\n`
+    personFamily += `Last Name: ${person.lastName}\n`
+    personFamily += `Parents: ${person.parents}\n`
+    personFamily += `Current Spouse: ${person.currentSpouse}\n`
+    alert(personFamily)
+}
+    
+            
