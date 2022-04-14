@@ -199,13 +199,27 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
+// function findPersonFamily(people) {   
+//     let result = people.filter(function(person){      
+//         if (person.currentSpouse === person.id){return true}        
+//         if (person.parents.includes(person.id)){return true}        
+//         if (person.parents === person.parents){return true}
+//         else {return false}              
+//         return result
+//         alert(result)
+//     })
+// }
 
-function findPersonFamily(person){
-    let personFamily = `First Name: ${person.firstName}\n`
-    personFamily += `Last Name: ${person.lastName}\n`
-    personFamily += `Parents: ${person.parents}\n`
-    personFamily += `Current Spouse: ${person.currentSpouse}\n`
-    alert(personFamily)
+
+
+function findPersonFamily(person, people){
+    let result = people.filter(function(element){      
+        if (person.currentSpouse === element.id){return true}        
+        if (person.parents.includes(element.id)){return true}        
+        if (person.parents === element.parents){return true}             
+        // alert(personFamily.firstName.lastName)
+    })
+    return displayPeople(result)
 }
-    
-            
+
+// if a person has family memebers in the array in their own properties, we need to see that family members properties 
