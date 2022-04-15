@@ -73,7 +73,7 @@ function mainMenu(person, people) {
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
             let personFamily = findPersonFamily(person[0], people);
-            alert(personFamily);
+            //alert(personFamily);
             break;
         case "descendants":
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
@@ -213,13 +213,39 @@ function chars(input) {
 
 
 function findPersonFamily(person, people){
-    let result = people.filter(function(element){      
-        if (person.currentSpouse === element.id){return true}        
-        if (person.parents.includes(element.id)){return true}        
-        if (person.parents === element.parents){return true}
-        if (person.currentSpouse === element.id) alert("current spouse")
+    let foundSpouse = people.filter(function(element){      
+        if (person.currentSpouse === element.id){return true}
     })
-    return displayPeople(result)
+    
+    let foundParents = people.filter(function(element){
+        if (person.parents.includes(element.id)){return true}
+    })
+
+    let foundSiblings = people.filter(function(element){
+        if ((element.parents.includes(person.parents[0]) || element.parents.includes(person.parents[1])) && element.id !== person.id)
+        {return true}
+    })
+
+    let foundChild = people.filter(function(element){
+        if (element.parents.includes(person.id)){return true}
+    })
+
+    if(foundSiblings.length > 0){
+        alert(`Siblings: ${foundSiblings[0].firstName + foundSiblings[0].lastName}\n`)
+        //alert(JSON.stringify(foundSiblings))
+    }else{alert('This Person has no siblings')}
+
+    alert(`Spouse: ${foundSpouse[0].firstName + foundSpouse[0].lastName}\n`) 
+
+    alert(`Parent: ${foundParents[0].firstName + foundParents[0].lastName}\n`) 
+
+    if(foundChild.length > 0 ){
+        alert(`Child:  ${foundChild[0].firstName + foundChild[0].lastName}\n`)
+    }else{
+        alert('No children found, call Maury')
+    }
+
 }
 
+//return displayPeople(result)
 // if a person has family memebers in the array in their own properties, we need to see that family members properties 
