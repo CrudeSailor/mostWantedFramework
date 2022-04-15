@@ -32,6 +32,7 @@ function app(people) {
             //! TODO #4: Declare a searchByTraits (multiple traits) function //////////////////////////////////////////
                 //! TODO #4a: Provide option to search for single or multiple //////////////////////////////////////////
             searchResults = searchByTraits(people);
+
             break;
         default:
             // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
@@ -235,15 +236,17 @@ function findPersonFamily(person, people){
         //alert(JSON.stringify(foundSiblings))
     }else{alert('This Person has no siblings')}
 
-    alert(`Spouse: ${foundSpouse[0].firstName + foundSpouse[0].lastName}\n`) 
+    if(foundSpouse.length > 0){
+        alert(`Spouse: ${foundSpouse[0].firstName + foundSpouse[0].lastName}\n`) 
+    }else{alert(`This person has no Spouse`)}
 
-    alert(`Parent: ${foundParents[0].firstName + foundParents[0].lastName}\n`) 
+    if(foundParents.length > 0){
+        alert(`Parent: ${foundParents[0].firstName + foundParents[0].lastName}\n`)
+    }else{alert(`This person has no Parents`)}  
 
     if(foundChild.length > 0 ){
         alert(`Child:  ${foundChild[0].firstName + foundChild[0].lastName}\n`)
-    }else{
-        alert('No children found, call Maury')
-    }
+    }else{alert('No children found, call Maury')}
 
 }
 
