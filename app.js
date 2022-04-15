@@ -252,3 +252,27 @@ function findPersonFamily(person, people){
 
 //return displayPeople(result)
 // if a person has family memebers in the array in their own properties, we need to see that family members properties 
+
+function searchByTraits(person, people){
+    let findByTrait = promptFor('What Trait are you looking for?', chars)
+    
+    let searchByFirstName = people.filter(function(element){
+        if (person.firstName.includes (element.firstName)){return true}
+    })
+    let searchByLastName = people.filter(function(element){
+        if (person.lastName.includes (element.lastName)){return true}
+    })
+    return searchByFirstName + searchByLastName
+}
+// let firstName = promptFor("What is the person's first name?", chars)
+// let lastName = promptFor("What is the person's last name?", chars)
+// let gender = promptFor("What is the person's gender?", chars)
+// let dob = promptFor("What is the person's DOB?", chars)
+// let height = promptFor("What is the person's Height?", chars)
+// let weight = promptFor("What is the person's Weight?", chars)
+//  let eyeColor = promptFor("What is the person's Eye Color?", chars)
+// let occupation = promptFor("What is this person's Occupation?", chars)
+//  let parents = promptFor("Who are this person's Parents?", chars)
+// let currentSpouse = promptFor("Who is this person's Current Spouse?", chars)
+// prompt(`Search By Trait: ${searchByFirstName}\n`)
+// prompt(`Search By Trait: ${searchByLastName}\n`)
