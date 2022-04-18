@@ -255,14 +255,21 @@ function findPersonFamily(person, people){
 
 function searchByTraits(person, people){
     let findByTrait = promptFor('What Trait are you looking for?', chars)
-    
-    let searchByFirstName = people.filter(function(element){
-        if (person.firstName.includes (element.firstName)){return true}
+
+        if (Response == 'gender')promptFor('what Gender are you looking for?', chars) 
+        if (Response == 'male'){return searchByTraits}
+
+    let searchByGender = person.filter(function(element){
+        if (element.gender.includes('male')){return true}
+        
     })
-    let searchByLastName = people.filter(function(element){
-        if (person.lastName.includes (element.lastName)){return true}
-    })
-    return searchByFirstName + searchByLastName
+    // let searchByDob = person.filter(function(element){
+    //     if (people.dob === element.dob){return true}
+    // })
+    // return searchByFirstName + searchByLastName
+	alert(`Here are all the Males: ${searchByGender.firstName} + ${searchByGender.lastName}\n`)
+
+
 }
 // let firstName = promptFor("What is the person's first name?", chars)
 // let lastName = promptFor("What is the person's last name?", chars)
