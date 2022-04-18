@@ -250,6 +250,11 @@ function findPersonFamily(person, people){
 
 }
 
+function findPersonDescendants(person, people){
+    let 
+}
+
+
 
 
 
@@ -310,6 +315,7 @@ function searchByTrait(people){
         }
 }
 function searchByGender(people){
+    let listed = ""
     let gender = promptFor("What gender are you looking for?", chars)
     let foundPerson = people.filter(function(person){
         if (person.gender === gender){
@@ -318,7 +324,6 @@ function searchByGender(people){
     }
     )
         for (let i = 0; i < foundPerson.length; i++) {
-        var listed ;
         listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
     }
     alert(listed);
@@ -326,6 +331,7 @@ function searchByGender(people){
 }
 
 function searchByDOB(people){
+    let listed = ""
     let dob = promptFor("What Date of Birth are you looking for?(ex. 0/00/0000)", chars)
     let foundPerson = people.filter(function(person){
         if (person.dob === dob){
@@ -334,7 +340,6 @@ function searchByDOB(people){
     }
     )
         for (let i = 0; i < foundPerson.length; i++) {
-        var listed ;
         listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
     }
     alert(listed);
@@ -342,38 +347,40 @@ function searchByDOB(people){
 }
 
 function searchByHeight(people){
+    let listed = ""
     let height = promptFor("What Height are you looking for?(ex. 00)", chars)
     let foundPerson = people.filter(function(person){
-        if (person.height[0] === height[0]){
+        if (person.height === parseInt(height)){
             return true;
         }
     }
     )
         for (let i = 0; i < foundPerson.length; i++) {
-        var listed ;
-        listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
-    }
-    alert(foundPerson);
-    app(people)
-}
-
-function searchByWeight(people){
-    let weight = promptFor("What Weight are you looking for?(ex. 205)", chars)
-    let foundPerson = people.filter(function(person){
-        if (person.weight[0] === weight[0]){
-            return true;
-        }
-    }
-    )
-        for (let i = 0; i < foundPerson.length; i++) {
-        var listed ;
         listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
     }
     alert(listed);
     app(people)
 }
 
+function searchByWeight(people){
+    let listed = ""
+    let weight = promptFor("What weight are you looking for?(ex. 205)", chars)
+    let foundPerson = people.filter(function(person){
+        if (person.weight === parseInt(weight)){
+            return true;
+        }
+    }
+    )
+        for (let i = 0; i < foundPerson.length; i++) {
+        listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
+    }
+    alert(listed)
+    app(people)
+}
+
+
 function searchByEyeColor(people){
+    let listed = ""
     let eyeColor = promptFor("What Eye Color are you looking for?(ex. Hazel)", chars)
     let foundPerson = people.filter(function(person){
         if (person.eyeColor === eyeColor){
@@ -382,7 +389,6 @@ function searchByEyeColor(people){
     }
     )
         for (let i = 0; i < foundPerson.length; i++) {
-        var listed ;
         listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
     }
     alert(listed);
@@ -390,6 +396,7 @@ function searchByEyeColor(people){
 }
 
 function searchByOccupation(people){
+    let listed = ""
     let occupation = promptFor("What occupation are you looking for?(ex. Under water Basket Weaver)", chars)
     let foundPerson = people.filter(function(person){
         if (person.occupation === occupation){
@@ -398,7 +405,6 @@ function searchByOccupation(people){
     }
     )
         for (let i = 0; i < foundPerson.length; i++) {
-        var listed ;
         listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
     }
     alert(listed);
