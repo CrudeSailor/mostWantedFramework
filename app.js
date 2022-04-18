@@ -31,7 +31,7 @@ function app(people) {
         case "no":
             //! TODO #4: Declare a searchByTraits (multiple traits) function //////////////////////////////////////////
                 //! TODO #4a: Provide option to search for single or multiple //////////////////////////////////////////
-            searchResults = searchByTraits(people);
+            searchResults = searchByTrait(people);
 
             break;
         default:
@@ -250,36 +250,176 @@ function findPersonFamily(person, people){
 
 }
 
-//return displayPeople(result)
-// if a person has family memebers in the array in their own properties, we need to see that family members properties 
-
-function searchByTraits(person, people){
-    let findByTrait = promptFor('What Trait are you looking for?', chars)
-
-        if (Response == 'gender')promptFor('what Gender are you looking for?', chars) 
-        if (Response == 'male'){return searchByTraits}
-
-    let searchByGender = person.filter(function(element){
-        if (element.gender.includes('male')){return true}
-        
-    })
-    // let searchByDob = person.filter(function(element){
-    //     if (people.dob === element.dob){return true}
-    // })
-    // return searchByFirstName + searchByLastName
-	alert(`Here are all the Males: ${searchByGender.firstName} + ${searchByGender.lastName}\n`)
 
 
+
+function searchByTrait(people){
+    let peopleList = "";
+    let searchResults;
+    let userInput = prompt("Would you like to search by gender, DOB, height, weight, eye color, or occupation?");
+    userInput.toLowerCase();
+    switch(userInput){
+        case "gender":
+            searchResults = searchByGender(people);
+            if (searchResults.length === 0){
+                alert("There is no one that matches this search!")
+            }
+            else
+                displayTraitPeople(searchResults)
+            break
+        case "DOB":
+            searchResults = searchByDOB(people);
+            if(searchResults.length === 0){
+                alert("There is no one born on this date!")
+            }
+            else
+                displayTraitPeople(searchResults)
+            break
+        case "height":
+            searchResults = searchByHeight(people);
+            if (searchResults.length === 0){
+                alert ("There is no one this height!")
+            }
+            else
+                displayTraitPeople(searchResults)
+            break
+        case "weight":
+            searchResults = searchByWeight(people);
+            if (searchResults.length === 0){
+                alert ('There is no one that weighs that much!')
+            }
+            else
+                displayTraitPeople(searchResults)
+            break
+        case "eye color":
+            searchResults = searchByEyeColor(people);
+            if (searchResults.length === 0){
+                alert ("There is no one with that eye color!")
+            }
+            else
+                displayTraitPeople(searchResults)
+            break
+        case "occupation":
+            searchResults = searchByOccupation(people);
+            if (searchResults.length === 0){
+                alert ("There is no one with that occupation!")
+            }
+            else
+                displayTraitPeople(searchResults)
+            break
+        }
 }
-// let firstName = promptFor("What is the person's first name?", chars)
-// let lastName = promptFor("What is the person's last name?", chars)
-// let gender = promptFor("What is the person's gender?", chars)
-// let dob = promptFor("What is the person's DOB?", chars)
-// let height = promptFor("What is the person's Height?", chars)
-// let weight = promptFor("What is the person's Weight?", chars)
-//  let eyeColor = promptFor("What is the person's Eye Color?", chars)
-// let occupation = promptFor("What is this person's Occupation?", chars)
-//  let parents = promptFor("Who are this person's Parents?", chars)
-// let currentSpouse = promptFor("Who is this person's Current Spouse?", chars)
-// prompt(`Search By Trait: ${searchByFirstName}\n`)
-// prompt(`Search By Trait: ${searchByLastName}\n`)
+function searchByGender(people){
+    let gender = promptFor("What gender are you looking for?", chars)
+    let foundPerson = people.filter(function(person){
+        if (person.gender === gender){
+            return true;
+        }
+    }
+    )
+        for (let i = 0; i < foundPerson.length; i++) {
+        var listed ;
+        listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
+    }
+    alert(listed);
+    // app(people)
+}
+
+function searchByDOB(people){
+    let dob = promptFor("What Date of Birth are you looking for?(ex. 0/00/0000)", chars)
+    let foundPerson = people.filter(function(person){
+        if (person.dob === dob){
+            return true;
+        }
+    }
+    )
+        for (let i = 0; i < foundPerson.length; i++) {
+        var listed ;
+        listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
+    }
+    alert(listed);
+    app(people)
+}
+
+function searchByHeight(people){
+    let height = promptFor("What Height are you looking for?(ex. 00)", chars)
+    let foundPerson = people.filter(function(person){
+        if (person.height[0] === height[0]){
+            return true;
+        }
+    }
+    )
+        for (let i = 0; i < foundPerson.length; i++) {
+        var listed ;
+        listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
+    }
+    alert(foundPerson);
+    app(people)
+}
+
+function searchByWeight(people){
+    let weight = promptFor("What Weight are you looking for?(ex. 205)", chars)
+    let foundPerson = people.filter(function(person){
+        if (person.weight[0] === weight[0]){
+            return true;
+        }
+    }
+    )
+        for (let i = 0; i < foundPerson.length; i++) {
+        var listed ;
+        listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
+    }
+    alert(listed);
+    app(people)
+}
+
+function searchByEyeColor(people){
+    let eyeColor = promptFor("What Eye Color are you looking for?(ex. Hazel)", chars)
+    let foundPerson = people.filter(function(person){
+        if (person.eyeColor === eyeColor){
+            return true;
+        }
+    }
+    )
+        for (let i = 0; i < foundPerson.length; i++) {
+        var listed ;
+        listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
+    }
+    alert(listed);
+    app(people)
+}
+
+function searchByOccupation(people){
+    let occupation = promptFor("What occupation are you looking for?(ex. Under water Basket Weaver)", chars)
+    let foundPerson = people.filter(function(person){
+        if (person.occupation === occupation){
+            return true;
+        }
+    }
+    )
+        for (let i = 0; i < foundPerson.length; i++) {
+        var listed ;
+        listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
+    }
+    alert(listed);
+    app(people)
+}
+
+// function searchByCriterion(people){
+
+//     let searchByCriteria = promptFor("What trait are you looking for? Gender, DOB, Height, Weight, Eye Color ", chars)
+//     let searchByGender = promptFor("What Gender are you looking for?", chars)
+
+//     let foundMales = people.filter(function(person){
+//         if (person.gender.includes (person.searchByGender)){return true}
+
+//     })
+//         if (foundMales.length > 0){
+//             alert (`Here are all the males: ${foundMales.firstName} + ${foundMales.lastName}\n` )}
+//         else{alert('There are no Males')}
+        
+// }
+
+
+
+
