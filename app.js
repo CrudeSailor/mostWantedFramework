@@ -223,19 +223,19 @@ function findPersonFamily(person, people){
     })
 
     if(foundSiblings.length > 0){
-        alert(`Siblings: ${foundSiblings[0].firstName + foundSiblings[0].lastName}\n`)
+        alert(`Siblings: ${foundSiblings[0].firstName + " " + foundSiblings[0].lastName}\n`)
     }else{alert('This Person has no siblings')}
 
     if(foundSpouse.length > 0){
-        alert(`Spouse: ${foundSpouse[0].firstName + foundSpouse[0].lastName}\n`) 
+        alert(`Spouse: ${foundSpouse[0].firstName + " " + foundSpouse[0].lastName}\n`) 
     }else{alert(`This person has no Spouse`)}
 
     if(foundParents.length > 0){
-        alert(`Parent: ${foundParents[0].firstName + foundParents[0].lastName}\n`)
+        alert(`Parent: ${foundParents[0].firstName + " " + foundParents[0].lastName}\n`)
     }else{alert(`This person has no Parents`)}  
 
     if(foundChild.length > 0 ){
-        alert(`Child:  ${foundChild[0].firstName + foundChild[0].lastName}\n`)
+        alert(`Child:  ${foundChild[0].firstName + " " + foundChild[0].lastName}\n`)
     }else{alert('No children found, call Maury')}
 
 }
