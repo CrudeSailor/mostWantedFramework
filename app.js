@@ -276,9 +276,10 @@ function getDescendants(person,people) {
 
 
 function searchByTrait(people){
-    let peopleList = ""
+   
     let searchResults
     let userInput = prompt("Would you like to search by gender, DOB, height, weight, eye color, or occupation?");
+   
     userInput.toLowerCase()
     switch(userInput){
         case "gender":
