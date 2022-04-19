@@ -139,16 +139,16 @@ function displayPeople(people) {
  * @param {Object} person       A singular object.
  */
 function displayPerson(person) {
-    let personInfo = `First Name: ${person.firstName}\n`;
-    personInfo += `Last Name: ${person.lastName}\n`;
-    personInfo += `Gender: ${person.gender}\n`;
-    personInfo += `DOB: ${person.dob}\n`;
-    personInfo += `Height: ${person.height}\n`;
-    personInfo += `Weight: ${person.weight}\n`;
-    personInfo += `Eye Color: ${person.eyeColor}\n`;
-    personInfo += `Occupation: ${person.occupation}\n`;
-    personInfo += `Parents: ${person.Parents}\n`;
-    personInfo += `Current Spuse: ${person.currentSpouse}\n`;
+    let personInfo = `First Name: ${person.firstName}\n`
+    personInfo += `Last Name: ${person.lastName}\n`
+    personInfo += `Gender: ${person.gender}\n`
+    personInfo += `DOB: ${person.dob}\n`
+    personInfo += `Height: ${person.height}\n`
+    personInfo += `Weight: ${person.weight}\n`
+    personInfo += `Eye Color: ${person.eyeColor}\n`
+    personInfo += `Occupation: ${person.occupation}\n`
+    personInfo += `Parents: ${person.Parents}\n`
+    personInfo += `Current Spuse: ${person.currentSpouse}\n`
 
 
 
@@ -200,16 +200,7 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-// function findPersonFamily(people) {   
-//     let result = people.filter(function(person){      
-//         if (person.currentSpouse === person.id){return true}        
-//         if (person.parents.includes(person.id)){return true}        
-//         if (person.parents === person.parents){return true}
-//         else {return false}              
-//         return result
-//         alert(result)
-//     })
-// }
+
 
 
 
@@ -233,7 +224,6 @@ function findPersonFamily(person, people){
 
     if(foundSiblings.length > 0){
         alert(`Siblings: ${foundSiblings[0].firstName + foundSiblings[0].lastName}\n`)
-        //alert(JSON.stringify(foundSiblings))
     }else{alert('This Person has no siblings')}
 
     if(foundSpouse.length > 0){
@@ -250,8 +240,35 @@ function findPersonFamily(person, people){
 
 }
 
-function findPersonDescendants(person, people){
-    let 
+function findPersonDescendants(person,people) {
+    let descendants = findDescendants(person , people)
+    if (descendants.length === 0) {
+        descendants = "descendants not in data set"
+    }
+    alert(descendants)
+    app(people)
+}
+function findDescendants(person, people) {
+    let descendant = getDescendants(person,people)
+    let descendants = ""
+    for (let i = 0; i < descendant.length; i++) {
+        descendants += descendant[i].firstName + " " + descendant[i].lastName + ". "
+        if (i >=0) {
+            let grandChildren = findDescendants(descendant[i], people)
+            descendants += grandChildren
+        }
+    }
+    return descendants
+}
+function getDescendants(person,people) {
+    let descendants = []
+    descendants = people.filter(function(element) {
+        if (element.parents.length ===0) {return false}
+        else if (element.parents[0] === person.id || element.parents[1] === person.id){
+            {return true}
+        }
+    })
+    return descendants
 }
 
 
@@ -259,13 +276,13 @@ function findPersonDescendants(person, people){
 
 
 function searchByTrait(people){
-    let peopleList = "";
-    let searchResults;
+    let peopleList = ""
+    let searchResults
     let userInput = prompt("Would you like to search by gender, DOB, height, weight, eye color, or occupation?");
-    userInput.toLowerCase();
+    userInput.toLowerCase()
     switch(userInput){
         case "gender":
-            searchResults = searchByGender(people);
+            searchResults = searchByGender(people)
             if (searchResults.length === 0){
                 alert("There is no one that matches this search!")
             }
@@ -273,7 +290,7 @@ function searchByTrait(people){
                 displayTraitPeople(searchResults)
             break
         case "DOB":
-            searchResults = searchByDOB(people);
+            searchResults = searchByDOB(people)
             if(searchResults.length === 0){
                 alert("There is no one born on this date!")
             }
@@ -281,7 +298,7 @@ function searchByTrait(people){
                 displayTraitPeople(searchResults)
             break
         case "height":
-            searchResults = searchByHeight(people);
+            searchResults = searchByHeight(people)
             if (searchResults.length === 0){
                 alert ("There is no one this height!")
             }
@@ -289,7 +306,7 @@ function searchByTrait(people){
                 displayTraitPeople(searchResults)
             break
         case "weight":
-            searchResults = searchByWeight(people);
+            searchResults = searchByWeight(people)
             if (searchResults.length === 0){
                 alert ('There is no one that weighs that much!')
             }
@@ -297,7 +314,7 @@ function searchByTrait(people){
                 displayTraitPeople(searchResults)
             break
         case "eye color":
-            searchResults = searchByEyeColor(people);
+            searchResults = searchByEyeColor(people)
             if (searchResults.length === 0){
                 alert ("There is no one with that eye color!")
             }
@@ -305,7 +322,7 @@ function searchByTrait(people){
                 displayTraitPeople(searchResults)
             break
         case "occupation":
-            searchResults = searchByOccupation(people);
+            searchResults = searchByOccupation(people)
             if (searchResults.length === 0){
                 alert ("There is no one with that occupation!")
             }
@@ -326,8 +343,8 @@ function searchByGender(people){
         for (let i = 0; i < foundPerson.length; i++) {
         listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
     }
-    alert(listed);
-    // app(people)
+    alert(listed)
+    app(people)
 }
 
 function searchByDOB(people){
@@ -342,7 +359,7 @@ function searchByDOB(people){
         for (let i = 0; i < foundPerson.length; i++) {
         listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
     }
-    alert(listed);
+    alert(listed)
     app(people)
 }
 
@@ -351,14 +368,14 @@ function searchByHeight(people){
     let height = promptFor("What Height are you looking for?(ex. 00)", chars)
     let foundPerson = people.filter(function(person){
         if (person.height === parseInt(height)){
-            return true;
+            return true
         }
     }
     )
         for (let i = 0; i < foundPerson.length; i++) {
         listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
     }
-    alert(listed);
+    alert(listed)
     app(people)
 }
 
@@ -367,7 +384,7 @@ function searchByWeight(people){
     let weight = promptFor("What weight are you looking for?(ex. 205)", chars)
     let foundPerson = people.filter(function(person){
         if (person.weight === parseInt(weight)){
-            return true;
+            return true
         }
     }
     )
@@ -384,14 +401,14 @@ function searchByEyeColor(people){
     let eyeColor = promptFor("What Eye Color are you looking for?(ex. Hazel)", chars)
     let foundPerson = people.filter(function(person){
         if (person.eyeColor === eyeColor){
-            return true;
+            return true
         }
     }
     )
         for (let i = 0; i < foundPerson.length; i++) {
         listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
     }
-    alert(listed);
+    alert(listed)
     app(people)
 }
 
@@ -400,31 +417,17 @@ function searchByOccupation(people){
     let occupation = promptFor("What occupation are you looking for?(ex. Under water Basket Weaver)", chars)
     let foundPerson = people.filter(function(person){
         if (person.occupation === occupation){
-            return true;
+            return true
         }
     }
     )
         for (let i = 0; i < foundPerson.length; i++) {
         listed += (`${foundPerson[i].firstName}  ${foundPerson[i].lastName} \n`)
     }
-    alert(listed);
+    alert(listed)
     app(people)
 }
-
-// function searchByCriterion(people){
-
-//     let searchByCriteria = promptFor("What trait are you looking for? Gender, DOB, Height, Weight, Eye Color ", chars)
-//     let searchByGender = promptFor("What Gender are you looking for?", chars)
-
-//     let foundMales = people.filter(function(person){
-//         if (person.gender.includes (person.searchByGender)){return true}
-
-//     })
-//         if (foundMales.length > 0){
-//             alert (`Here are all the males: ${foundMales.firstName} + ${foundMales.lastName}\n` )}
-//         else{alert('There are no Males')}
-        
-// }
+    
 
 
 
