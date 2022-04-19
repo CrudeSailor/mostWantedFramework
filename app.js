@@ -243,7 +243,7 @@ function findPersonFamily(person, people){
 function findPersonDescendants(person,people) {
     let descendants = findDescendants(person , people)
     if (descendants.length === 0) {
-        descendants = "descendants not in data set"
+        descendants = "This person doesn't have any descendants"
     }
     alert(descendants)
     app(people)
